@@ -1,43 +1,46 @@
-import React, { useState, useEffect } from "react";
-import {ThemeProvider} from "styled-components";
-import { GlobalStyles } from "./components/globalStyle";
-import { lightTheme, darkTheme } from "./components/Themes"
-import './App.css';
-import {Navbar, Container, NavItem, CardList} from 'react-bootstrap'
-import dummyData from "./data";
+import './App.scss';
+import React from 'react'
+import Typist from 'react-typist';
+import { Jumbotron, Container, Col, Row, Button } from 'react-bootstrap';
 
-const App = () => {
-  const [videos, setVideos] = useState([]);
-  const [theme, setTheme] = useState('light');
-  const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light')
-}
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVideos(dummyData);
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, []);
+function App() {
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-      <GlobalStyles/>
-        <div className="App">
-          <button onClick={themeToggler}>Switch Theme</button>
-          {
-            videos.map((list, index) => {
-              return (
-                <section key={index}>
-                  <h2 className="section-title">{list.section}</h2>
-                  <CardList list={list} />
-                  <hr />
-                </section>
-              );
-            })}
+    <div>
+      <header>
+        <ul className='navItems pt-4'>
+          <li><a>test</a></li>
+          <li><a>test</a></li>
+          <li><a>test</a></li>
+          <li><a>test</a></li>
+        </ul>
+      </header>
+      <hr />
+      <body>
+        <Typist>
+          <Container className='introTron'>
+            <Col>
+              <h1 style={{ fontSize: "50px"}}>Hi, I'm Anthony,<br />I'm a<span style={{ fontSize: "50px", color: "#EA00D9" }}> web developer.</span> </h1>
+              <Button className="flatButton" variant="outline-dark" >Contact Me!</Button>
+              {/* <button id='test' className="btn btn-outline-light btn-lg">hgjjghjhg</button> */}
+            </Col>
+          </Container>
+        </Typist>
+        <Container>
+          <h1  style={{ fontSize: "50px"}}>
+            My Portfolio
+          </h1>
+        </Container>
+      </body>
+      <footer className="footer fixed-bottom">
+        <div className="content has-text-centered">
+          <p>
+          </p>
         </div>
-      </>
-    </ThemeProvider>
-    
-  );
-};
-export default App;
+
+      </footer>
+
+    </div>
+  )
+}
+
+export default App
